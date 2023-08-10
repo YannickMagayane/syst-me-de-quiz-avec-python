@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Quiz PTS </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz PTS</title>
     <!-- Liens vers les ressources Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -10,6 +12,10 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Quiz PTS</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link" href="{% url 'choose_course' %}">Home</a></li>
@@ -20,14 +26,14 @@
                     <li class="nav-item"><a class="nav-link" href="{% url 'create_answer' %}">Create Answer</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'course_percentages' %}">Course Percentages</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register Trainer</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout </a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
                 {% else %}
-                <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Se déconnecté</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Se déconnecter</a></li>
                 {% endif %}
             </ul>
         </div>
     </nav>
-    <div class="container">
+    <div class="container-fluid">
         {% block content %}
         {% endblock %}
     </div>
