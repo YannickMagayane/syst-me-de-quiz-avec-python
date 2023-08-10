@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mt-5">{{ user.username }} - Quiz History</h1>
+    <div class="table-responsive mt-4">
+        <table class="table table-bordered table-striped">
+            <thead class="thead-light">
+                <tr>
+                    <th>Course</th>
+                    <th>Completion Date</th>
+                    <th>Score</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for completion in completions %}
+                <tr>
+                    <td>{{ completion.course.title }}</td>
+                    <td>{{ completion.completion_date }}</td>
+                    <td>{{ completion.score }}</td>
+                    <td>
+                        <a href="{% url 'report_cheating_admin' completion.id %}" class="btn btn-danger btn-sm">Report Cheating</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

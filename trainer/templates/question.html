@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h1>Question {{ question.id }}</h1>
+                </div>
+                <div class="card-body">
+                    <p>{{ question.text }}</p>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="list-group">
+                            {% for answer in answers %}
+                                <label class="list-group-item">
+                                    <input type="radio" name="answer" value="{{ answer.id }}" class="mr-2">{{ answer.text }}
+                                </label>
+                            {% endfor %}
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-3">Suivant</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

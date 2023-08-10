@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mt-5">Course Percentages</h1>
+    <div class="table-responsive mt-4">
+        <table class="table table-bordered table-striped">
+            <thead class="thead-light">
+                <tr>
+                    <th>User</th>
+                    {% for course, _ in percentages %}
+                        <th>{{ course.title }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.get_full_name }}</td>
+                    {% for course, course_percentages in percentages %}
+                        {% for user_percentage in course_percentages %}
+                            {% if user_percentage.0 == user %}
+                                <td class="text-center">
+                                    {% if user_percentage.1 > 0 %}
+                                        {{ user_percentage.1|floatformat:2 }}%
+                                    {% else %}
+                                        0%
+                                    {% endif %}
+                                </td>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
